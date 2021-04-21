@@ -16,6 +16,11 @@ def read_csv(filename):
     the_file.close()
     return table
 
+def remove_unknowns(column):
+    for row in column:
+        if "Unknown" in row:
+            column.remove(row)
+    return column
 
 
 def get_column(table, header, col_name):
