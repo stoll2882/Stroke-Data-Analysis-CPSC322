@@ -185,6 +185,8 @@ def remove_unknowns(column):
             column.remove(row)
     return column
 
+def remove_nas()
+
 
 def get_column(table, header, col_name):
     '''

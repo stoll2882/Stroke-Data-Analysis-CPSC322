@@ -323,6 +323,20 @@ class MyPyTable:
                     i = i - 1
                     num_rows -= 1
             i += 1
+    
+    def remove_rows_with_na_only(self):
+        """Remove rows from the table data that contain a missing value ("NA") but leave "Unknown" rows so 
+        they can be reassigned.
+        """
+        num_rows = len(self.data)
+        i = 0
+        while (i < num_rows):
+            for col in self.data[i]:
+                if (col == "NA" or col == "N/A" ):
+                    self.data.pop(i)
+                    i = i - 1
+                    num_rows -= 1
+            i += 1
 
     def replace_missing_values_with_column_average(self, col_name):
         """For columns with continuous data, fill missing values in a column by the column's original average.
