@@ -2,6 +2,7 @@ import copy
 import numpy as np
 import math
 import myutils as myutils
+import random
 
 class MySimpleLinearRegressor:
     """Represents a simple linear regressor.
@@ -625,3 +626,63 @@ class MyDecisionTreeClassifier:
             You will need to install graphviz in the Docker container as shown in class to complete this method.
         """
         pass # TODO: (BONUS) fix this
+
+class MyRandomForestClassifier:
+    """Represents a forest classifer, an ensamble of all trees
+
+    Attributes:
+        X_train(list of list of obj): The list of training instances (samples). 
+                The shape of X_train is (n_train_samples, n_features)
+        y_train(list of obj): The target y values (parallel to X_train). 
+            The shape of y_train is n_samples
+        tree(nested list): The extracted tree model.
+
+    Notes:
+        Terminology: instance = sample = row and attribute = feature = column
+    """
+    def __init__(self):
+        '''
+        Initializer for MyRandomForestClassifier
+        '''
+        self.X_train = None
+        self.y_train = None
+        self.tree = None
+    
+    def fit(self, X_train, y_train):
+        '''
+        Notes: 
+
+        From ensamble learning unit!:
+        Implement a random forest classifer using (1)bagging and (2)random attribute subsets
+        1) Train each learner on a different training set
+            bagging: bootstrap aggregating
+    
+        2) trian each tree on a different attribute subset
+            at each node in tree select an attribute for a random subest of the available attributes (using size F)
+        '''
+        self.X_train = X_train
+        self.y_train = y_train
+        self.tree = tree
+
+    def predict(self):
+        pass
+
+    def compute_bootstrapped_sample(self):
+        ''' Function for bootstrap method
+            Self is passed in table 
+        '''
+        n = len(self)
+        sample = []
+        for _ in range(n):
+            rand_index = random.range(0,n)
+            sample.append(self[rand_index])
+        
+        return sample
+
+    def compute_random_subset(self, num_values):
+        '''
+        accepts a list of values (self) and a size of random subset of those to return
+        '''
+        shuffled = self[:] #shallow copy
+        random.shuffle(shuffled)
+        return shuffled[:num_values] #or can sort sorted(shuffled[:num_values])
