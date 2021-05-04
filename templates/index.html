@@ -1,0 +1,145 @@
+<!-- Super basic, currently very ugly html
+	Not including post request or anything yet
+	Uses variety of inputs so we can see if one is maybe easier or more helpful than others idk
+ 
+	Added all attributes just in case, can delete unneeded ones when time comes!
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Stroke Classifier</title>
+	<!-- <link rel="stylesheet" href="styles.css"> -->
+	<style>
+		body {
+			text-align: center;
+			margin: 0;
+		}
+
+		.main {
+			margin: auto;
+			height: 650px;
+			width: 800px;
+			background-color: rgb(155, 155, 155);
+			padding: 20px;
+			border: 5px solid black;
+		}
+
+		.submit {
+			height: 50px;
+			width: 100px;
+			color: white;
+			background-color: black;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main">
+		<header>
+			<h1>Stroke Data Analysis</h1>
+		</header>
+		<div style="line-height: 1.6">
+			<h2>Enter attribute values to predict if you are at risk for a stroke: </h2>
+			<h3>Attributes:<br></h3>
+			<form action="/" method="POST">
+				<strong>Gender:</strong>
+				<select id="att_val1" name="gender">
+					<option disabled selected value> -- select an option -- </option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select> <br>
+
+				<strong>Age:</strong>
+				<select id="att_val2" name="age">
+					<option disabled selected value> -- select an option -- </option>
+					<option value=0>0 - 2</option>
+					<option value=1>3 - 10</option>
+					<option value=2>11 - 20</option>
+					<option value=3>21 - 30</option>
+					<option value=4>31 - 40</option>
+					<option value=5>41 - 50</option>
+					<option value=6>51 - 60</option>
+					<option value=7>61 - 70</option>
+					<option value=8>71 - 80</option>
+					<option value=9>81 - 90</option>
+					<option value=10>90 +</option>
+				</select><br>
+				<!-- <input type="number" id="att_val2" name="age"><br> -->
+
+				<strong>Hypertension:</strong>
+				<input type="radio" id="att_val3_yes" name="hypertension" value=1>
+				<label for="att_val3_yes">Yes</label>
+				<input type="radio" id="att_val3_no" name="hypertension" value=0>
+				<label for="att_val3_no">No</label><br>
+
+				<strong>Heart Disease:</strong>
+				<input type="radio" id="att_val4_yes" name="heart_disease" value="1">
+				<label for="att_val4_yes">Yes</label>
+				<input type="radio" id="att_val4_no" name="heart_disease" value="0">
+				<label for="att_val4_no">No</label><br>
+
+				<strong>Marital Status (ever married):</strong>
+				<input type="radio" id="att_val5_yes" name="ever_married" value="1">
+				<label for="att_val5_yes">Yes</label>
+				<input type="radio" id="att_val5_no" name="ever_married" value="0">
+				<label for="att_val5_no">No</label><br>
+
+				<strong>Work Status:</strong>
+				<select id="att_val6" name="work">
+					<option disabled selected value> -- select an option -- </option>
+					<option value=0>Never Worked</option>
+					<option value=1>Child</option>
+					<option value=2>Private</option>
+					<option value=3>Self Employed</option>
+					<option value=4>Government Job</option>
+				</select><br>
+
+				<strong>Residence Type:</strong>
+				<input type="radio" id="att_val6_a" name="residence" value=0>
+				<label for="att_val7_a">Urban</label>
+				<input type="radio" id="att_val7_b" name="residence" value=1>
+				<label for="att_val7_b">Rural</label><br>
+
+				<strong>Glucose Level:</strong>
+				<select id="att_val8" name="glucose">
+					<option disabled selected value> -- select an option -- </option>
+					<option value=0>0 - 70</option>
+					<option value=1>71 - 140</option>
+					<option value=2>141 - 200</option>
+					<option value=3>200 +</option>
+				</select><br>
+
+				<strong>BMI:</strong>
+				<select id="att_val9" name="bmi">
+					<option disabled selected value> -- select an option -- </option>
+					<option value=0>0 - 15</option>
+					<option value=1>16 - 20</option>
+					<option value=2>21 - 25</option>
+					<option value=3>26 - 30</option>
+					<option value=3>31 - 40</option>
+					<option value=3>40 +</option>
+				</select><br>
+				<!-- <input type="number" id="att_val9" name="bmi"><br> -->
+
+				<strong>Smoking Status:</strong>
+				<select id="att_val10" name="smoking">
+					<option disabled selected value> -- select an option -- </option>
+					<option value="never_smoked">Never Smoked</option>
+					<option value="former_smoke">Formerly Smoked</option>
+					<option value="smokes">Smokes</option>
+				</select><br>
+				<br>
+				<input type="submit" class="submit"></input>
+			</form>
+			<div>
+				<h2>Are you at risk for having a stroke?</h2>
+				{{ Result }}
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

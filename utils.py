@@ -67,7 +67,7 @@ def get_trains_seperated(data, col_names, y_name):
         for i, name in enumerate(col_names):
             if i != y_name_index:
                 new_col_names.append(name)
-        return x_train, y_train
+        return x_train, y_train, new_col_names
 
 def remove_id_column(dataset):
     new_data = copy.deepcopy(dataset)
