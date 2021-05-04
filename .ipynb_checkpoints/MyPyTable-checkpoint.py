@@ -310,6 +310,19 @@ class MyPyTable:
                         dont_add.append(self.data[i])
 
         return duplicates  # TODO: fix this
+    
+#     def remove_rows_with_missing_values(self):
+#         """Remove rows from the table data that contain a missing value ("NA").
+#         """
+#         num_rows = len(self.data)
+#         i = 0
+#         while (i < num_rows):
+#             for col in self.data[i]:
+#                 if (col == "NA" or col == "N/A" or col == "Other"):
+#                     self.data.pop(i)
+#                     i = i - 1
+#                     num_rows -= 1
+#             i += 1
 
     def remove_rows_with_missing_values(self):
         """Remove rows from the table data that contain a missing value ("NA").
@@ -319,6 +332,20 @@ class MyPyTable:
         while (i < num_rows):
             for col in self.data[i]:
                 if (col == "NA" or col == "N/A" or col == "Unknown" or col == "Other"):
+                    self.data.pop(i)
+                    i = i - 1
+                    num_rows -= 1
+            i += 1
+    
+    def remove_rows_with_na_only(self):
+        """Remove rows from the table data that contain a missing value ("NA") but leave "Unknown" rows so 
+        they can be reassigned.
+        """
+        num_rows = len(self.data)
+        i = 0
+        while (i < num_rows):
+            for col in self.data[i]:
+                if (col == "NA" or col == "N/A" ):
                     self.data.pop(i)
                     i = i - 1
                     num_rows -= 1

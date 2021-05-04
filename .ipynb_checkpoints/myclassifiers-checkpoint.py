@@ -2,6 +2,7 @@ import copy
 import numpy as np
 import math
 import myutils as myutils
+import random
 
 class MySimpleLinearRegressor:
     """Represents a simple linear regressor.
@@ -142,6 +143,22 @@ class MyKNeighborsClassifier:
         top_k = output_sorted[:self.n_neighbors]
             
         return top_k
+    
+    def replace_unknowns_with_k_neighbors(self, replace_index):
+        print(replace_index)
+        for i, row in enumerate(self.X_train):
+            if row[replace_index] == -1:
+                nearest_neighbors = self.get_k_neighbors(row)
+                all_classifications = []
+                for neighbor in nearest_neighbors:
+                    if neighbor[2][replace_index] != -1:
+                        all_classifications.append(neighbor[2][replace_index])
+                if len(all_classifications) == 0:
+                    self.X_train[i][replace_index] = 0.0
+                else:
+                    avg_classification = float(sum(all_classifications)) / float(len(all_classifications))
+                    self.X_train[i][replace_index] = round(avg_classification)
+                
 
     def predict(self, X_test):
         """Makes predictions for test instances in X_test.
@@ -625,3 +642,63 @@ class MyDecisionTreeClassifier:
             You will need to install graphviz in the Docker container as shown in class to complete this method.
         """
         pass # TODO: (BONUS) fix this
+
+class MyRandomForestClassifier:
+    """Represents a forest classifer, an ensamble of all trees
+
+    Attributes:
+        X_train(list of list of obj): The list of training instances (samples). 
+                The shape of X_train is (n_train_samples, n_features)
+        y_train(list of obj): The target y values (parallel to X_train). 
+            The shape of y_train is n_samples
+        tree(nested list): The extracted tree model.
+
+    Notes:
+        Terminology: instance = sample = row and attribute = feature = column
+    """
+    def __init__(self):
+        '''
+        Initializer for MyRandomForestClassifier
+        '''
+        self.X_train = None
+        self.y_train = None
+        self.tree = None
+    
+    def fit(self, X_train, y_train):
+        '''
+        Notes: 
+
+        From ensamble learning unit!:
+        Implement a random forest classifer using (1)bagging and (2)random attribute subsets
+        1) Train each learner on a different training set
+            bagging: bootstrap aggregating
+    
+        2) trian each tree on a different attribute subset
+            at each node in tree select an attribute for a random subest of the available attributes (using size F)
+        '''
+        self.X_train = X_train
+        self.y_train = y_train
+        self.tree = tree
+
+    def predict(self):
+        pass
+
+    def compute_bootstrapped_sample(self):
+        ''' Function for bootstrap method
+            Self is passed in table 
+        '''
+        n = len(self)
+        sample = []
+        for _ in range(n):
+            rand_index = random.range(0,n)
+            sample.append(self[rand_index])
+        
+        return sample
+
+    def compute_random_subset(self, num_values):
+        '''
+        accepts a list of values (self) and a size of random subset of those to return
+        '''
+        shuffled = self[:] #shallow copy
+        random.shuffle(shuffled)
+        return shuffled[:num_values] #or can sort sorted(shuffled[:num_values])

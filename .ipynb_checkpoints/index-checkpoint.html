@@ -1,0 +1,73 @@
+<!-- Super basic, currently very ugly html
+	Not including post request or anything yet
+	Uses variety of inputs so we can see if one is maybe easier or more helpful than others idk
+ 
+	Added all attributes just in case, can delete unneeded ones when time comes!
+ -->
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Stroke Classifier</title>
+</head>
+
+<body>
+	<header>
+		<h1>Stroke Data Analysis</h1>
+	</header>
+	<div style = "line-height: 1.6"> 
+		<h3>Enter attribute values to predict a stroke: </h3>
+		<strong>Attributes:<br></strong>
+		Gender:<select id="att_val1" >
+					<option disabled selected value> -- select an option -- </option>
+					<option value = "male">Male</option>
+					<option value = "female">Female</option>
+				</select> <br>
+		Age: <input type="number" id="att_val2"><br>
+		Hypertension: <input type = "radio" id="att_val3_yes" name = "hypertension" value="yes_hyper">
+						<label for ="att_val3_yes">Yes</label>
+						<input type="radio" id="att_val3_no" name="hypertension" value="no_hyper">
+						<label for="att_val3_no">No</label><br>			
+						
+		Heart Disease: <input type = "radio" id="att_val4_yes" name="heart_disease" value="yes_heart">
+						<label for ="att_val4_yes">Yes</label>
+						<input type="radio" id="att_val4_no" name = "heart_disease" value="no_heart">
+						<label for="att_val4_no">No</label><br>	
+						
+		Marital Status (ever married): <input type = "radio" id="att_val5_yes" name ="ever_married" value="married">
+						<label for ="att_val5_yes">Yes</label>
+						<input type="radio" id="att_val5_no" name = "ever_married" value="never_married">
+						<label for="att_val5_no">No</label><br>	
+						
+		Work Status: <select id ="att_val6">
+						<option disabled selected value> -- select an option -- </option>
+						<option value = "never_worked">Never Worked</option>
+						<option value="children">Child</option>
+						<option value = "private">Private</option>
+						<option value = "self_employed">Self Employed</option>
+						<option value = "govt_job">Government Job</option>
+					</select><br>
+					
+		Residence Type: <input type = "radio" id="att_val6_a" name="residence" value="urban">
+						<label for ="att_val7_a">Urban</label>
+						<input type="radio" id="att_val7_b" name="residence" value="rural">
+						<label for ="att_val7_b">Rural</label><br>
+		Glucose Level: <select id ="att_val8">
+						<option disabled selected value> -- select an option -- </option>
+						<option value = "below_70">Below 70</option>
+						<option value="70_140">70 - 140</option>
+						<option value = "140_200">140 - 200</option>
+						<option value = "above_200">Above 200</option>
+					</select><br>
+		BMI: <input type = "number" id= "att_val9"><br>
+		Smoking Status: <select id ="att_val10">
+						<option disabled selected value> -- select an option -- </option>
+						<option value = "never_smoked">Never Smoked</option>
+						<option value="former_smoke">Formerly Smoked</option>
+						<option value = "smokes">Smokes</option>
+					</select><br>
+	</div>
+</body>
+</html>

@@ -163,6 +163,8 @@ def classify_stroke_data(dataset):
             dataset[i][smoking_index] = 1
         elif row[smoking_index] == "smokes":
             dataset[i][smoking_index] = 2
+        else:
+            dataset[i][smoking_index] = -1
             
     return classified_data
 
@@ -184,7 +186,6 @@ def remove_unknowns(column):
         if "Unknown" in row:
             column.remove(row)
     return column
-
 
 def get_column(table, header, col_name):
     '''
@@ -316,3 +317,9 @@ def compute_bin_frequencies(values, cutoffs):
                     freqs[i] += 1
 
     return freqs
+
+def remove_other_row(data):
+    for i, row in enumerate(data):
+        for val in row:
+            if val == "Other" or val == "other":
+                del data[i]

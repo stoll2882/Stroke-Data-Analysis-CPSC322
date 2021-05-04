@@ -143,6 +143,22 @@ class MyKNeighborsClassifier:
         top_k = output_sorted[:self.n_neighbors]
             
         return top_k
+    
+    def replace_unknowns_with_k_neighbors(self, replace_index):
+        print(replace_index)
+        for i, row in enumerate(self.X_train):
+            if row[replace_index] == -1:
+                nearest_neighbors = self.get_k_neighbors(row)
+                all_classifications = []
+                for neighbor in nearest_neighbors:
+                    if neighbor[2][replace_index] != -1:
+                        all_classifications.append(neighbor[2][replace_index])
+                if len(all_classifications) == 0:
+                    self.X_train[i][replace_index] = 0.0
+                else:
+                    avg_classification = float(sum(all_classifications)) / float(len(all_classifications))
+                    self.X_train[i][replace_index] = round(avg_classification)
+                
 
     def predict(self, X_test):
         """Makes predictions for test instances in X_test.
