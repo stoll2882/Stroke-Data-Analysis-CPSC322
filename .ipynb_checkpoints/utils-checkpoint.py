@@ -52,22 +52,24 @@ def get_accuracy_and_error_rate_stratified(knn_classifier):
     return accuracy, error_rate
 
 def get_trains_seperated(data, col_names, y_name):
-        y_name_index = col_names.index(y_name)
-        x_train = []
-        y_train = []
-        new_col_names = []
-        for row in data:
-            new_row = []
-            for i, val in enumerate(row):
-                if i != y_name_index:
-                    new_row.append(val)
-                else:
-                    y_train.append(val)
-            x_train.append(new_row)
-        for i, name in enumerate(col_names):
+    y_name_index = col_names.index(y_name)
+    print(y_name_index)
+    print(data[0])
+    x_train = []
+    y_train = []
+    new_col_names = []
+    for row in data:
+        new_row = []
+        for i, val in enumerate(row):
             if i != y_name_index:
-                new_col_names.append(name)
-        return x_train, y_train
+                new_row.append(val)
+            else:
+                y_train.append(val)
+        x_train.append(new_row)
+    for i, name in enumerate(col_names):
+        if i != y_name_index:
+            new_col_names.append(name)
+    return x_train, y_train
 
 def remove_id_column(dataset):
     new_data = copy.deepcopy(dataset)
