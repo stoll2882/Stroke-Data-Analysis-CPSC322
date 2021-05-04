@@ -75,5 +75,5 @@ if __name__ == "__main__":
     # 2.C. define a main.yml and push our source code to Github, where a Github Action builds an image and pushes it to the Heroku registry
 
     port = os.environ.get("PORT", 5000)
-    app.run(debug=True)  # TODO: set debug to False for production
+    app.run(debug=False)  # TODO: set debug to False for production
     # by default, Flask runs on port 5000
