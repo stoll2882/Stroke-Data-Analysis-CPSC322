@@ -74,6 +74,6 @@ if __name__ == "__main__":
     # ** 2.B. ** define a heroku.yml and push our source code to Heroku's git repo and Heroku will build the docker image for us
     # 2.C. define a main.yml and push our source code to Github, where a Github Action builds an image and pushes it to the Heroku registry
 
-    port = os.environ.get("PORT", 5000)
+    # port = os.environ.get("PORT", 5000)
     app.run(debug=False)  # TODO: set debug to False for production
     # by default, Flask runs on port 5000
