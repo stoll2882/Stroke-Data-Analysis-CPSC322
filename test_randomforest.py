@@ -54,7 +54,7 @@ def test_random_forest_classifier_fit():
             ]
         ]
 
-    classifier = MyDecisionTreeClassifier()
+    classifier = MyRandomForestClassifier()
     classifier.fit(interview_table, interview_results)
     assert np.allclose(classifier.tree, interview_tree)
     # only decision tree atm
