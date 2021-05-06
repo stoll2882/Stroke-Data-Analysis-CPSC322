@@ -3,7 +3,6 @@ import scipy.stats as stats
 
 from myclassifiers import MyRandomForestClassifier, MyDecisionTreeClassifier
 
-
 def test_random_forest_classifier_fit():
     # DECISION TREE TEST
 
@@ -58,3 +57,4 @@ def test_random_forest_classifier_fit():
     classifier = MyDecisionTreeClassifier()
     classifier.fit(interview_table, interview_results)
     assert np.allclose(classifier.tree, interview_tree)
+    # only decision tree atm
